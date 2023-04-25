@@ -28,7 +28,7 @@ public class SQLiteDataSourceTest {
     public void tearDown() {}
 
     @Test
-    public void enumParam() throws Exception {
+    void enumParam() throws Exception {
 
         SQLiteDataSource ds = new SQLiteDataSource();
         try (Connection conn = ds.getConnection();
@@ -50,7 +50,7 @@ public class SQLiteDataSourceTest {
     }
 
     @Test
-    public void encoding() throws Exception {
+    void encoding() throws Exception {
 
         String[] configArray =
                 new String[] {
@@ -82,7 +82,7 @@ public class SQLiteDataSourceTest {
     }
 
     @Test
-    public void setBusyTimeout() {
+    void setBusyTimeout() {
         final SQLiteDataSource ds = new SQLiteDataSource();
         ds.setBusyTimeout(1234);
         assertThat(

@@ -20,7 +20,7 @@ public class ErrorMessageTest {
     @TempDir File tempDir;
 
     @Test
-    public void moved() throws SQLException, IOException {
+    void moved() throws SQLException, IOException {
         File from = File.createTempFile("error-message-test-moved-from", ".sqlite", tempDir);
 
         try (Connection conn =
@@ -40,7 +40,7 @@ public class ErrorMessageTest {
     }
 
     @Test
-    public void writeProtected() throws SQLException, IOException {
+    void writeProtected() throws SQLException, IOException {
         File file = File.createTempFile("error-message-test-write-protected", ".sqlite", tempDir);
 
         try (Connection conn =
@@ -62,7 +62,7 @@ public class ErrorMessageTest {
     }
 
     @Test
-    public void cantOpenDir() throws IOException {
+    void cantOpenDir() throws IOException {
         File dir = File.createTempFile("error-message-test-cant-open-dir", "", tempDir);
         assumeThat(dir.delete()).isTrue();
         assumeThat(dir.mkdir()).isTrue();
@@ -74,7 +74,7 @@ public class ErrorMessageTest {
     }
 
     @Test
-    public void shouldUsePlainErrorCodeAsVendorCodeAndExtendedAsResultCode()
+    void shouldUsePlainErrorCodeAsVendorCodeAndExtendedAsResultCode()
             throws SQLException, IOException {
         File from = File.createTempFile("error-message-test-plain-1", ".sqlite", tempDir);
 
@@ -102,7 +102,7 @@ public class ErrorMessageTest {
     }
 
     @Test
-    public void unknownErrorExceptionMessageShouldContainOriginalErrorCode() {
+    void unknownErrorExceptionMessageShouldContainOriginalErrorCode() {
         int errorCode = 1234567890;
         String errorMessage = "fictitious code";
 

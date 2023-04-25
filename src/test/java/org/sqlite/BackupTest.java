@@ -25,7 +25,7 @@ public class BackupTest {
     @TempDir File tempDir;
 
     @Test
-    public void backupAndRestore() throws SQLException, IOException {
+    void backupAndRestore() throws SQLException, IOException {
         // create a memory database
         File tmpFile = File.createTempFile("backup-test", ".sqlite", tempDir);
 
@@ -91,7 +91,7 @@ public class BackupTest {
     }
 
     @Test
-    public void memoryToDisk() throws Exception {
+    void memoryToDisk() throws Exception {
         if (!SQLiteJDBCLoader.isNativeMode()) {
             return; // skip this test in pure-java mode
         }

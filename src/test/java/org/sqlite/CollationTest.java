@@ -35,7 +35,7 @@ public class CollationTest {
     }
 
     @Test
-    public void reverseCollation() throws SQLException {
+    void reverseCollation() throws SQLException {
         ArrayList<String> received = new ArrayList<>();
         Collation.create(
                 conn,
@@ -66,7 +66,7 @@ public class CollationTest {
     }
 
     @Test
-    public void unicodeCollation() throws SQLException {
+    void unicodeCollation() throws SQLException {
         ArrayList<String> received = new ArrayList<>();
         Collation.create(
                 conn,
@@ -102,7 +102,7 @@ public class CollationTest {
     }
 
     @Test
-    public void twoCollationsNoConflict() throws SQLException {
+    void twoCollationsNoConflict() throws SQLException {
         Collation.create(
                 conn,
                 "REVERSE",
@@ -153,7 +153,7 @@ public class CollationTest {
     }
 
     @Test
-    public void validateSpecialCharactersAreCorrectlyPassedToJava() throws SQLException {
+    void validateSpecialCharactersAreCorrectlyPassedToJava() throws SQLException {
         ArrayList<String> received = new ArrayList<>();
         Collation.create(
                 conn,
@@ -185,7 +185,7 @@ public class CollationTest {
     }
 
     @Test
-    public void destroy() throws SQLException {
+    void destroy() throws SQLException {
         Collation.create(
                 conn,
                 "c1",

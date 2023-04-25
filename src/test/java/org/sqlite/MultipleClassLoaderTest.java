@@ -66,7 +66,7 @@ public class MultipleClassLoaderTest {
     }
 
     @Test
-    public void multipleClassLoader() throws Throwable {
+    void multipleClassLoader() throws Throwable {
         // Get current classpath
         String[] stringUrls =
                 System.getProperty("java.class.path").split(System.getProperty("path.separator"));

@@ -42,7 +42,7 @@ public class PreparedStatementThreadTest {
      * behavior
      */
     @Test
-    public void testPreparedStmtConcurrentCloseSegFault() throws SQLException {
+    void testPreparedStmtConcurrentCloseSegFault() throws SQLException {
         connect();
         try {
             for (int i = 0; i < 100; i++) {
@@ -59,7 +59,7 @@ public class PreparedStatementThreadTest {
      * undefined C behavior
      */
     @Test
-    public void testPreparedStmtConcurrentCloseConnSegFault() throws SQLException {
+    void testPreparedStmtConcurrentCloseConnSegFault() throws SQLException {
         for (int i = 0; i < 100; i++) {
             connect();
             testRace(executorService, conn::close);

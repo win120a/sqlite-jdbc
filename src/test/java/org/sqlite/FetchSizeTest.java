@@ -30,7 +30,7 @@ public class FetchSizeTest {
     }
 
     @Test
-    public void testFetchSize() throws SQLException {
+    void testFetchSize() throws SQLException {
         assertThat(conn.prepareStatement("create table s1 (c1)").executeUpdate()).isEqualTo(0);
         PreparedStatement insertPrep = conn.prepareStatement("insert into s1 values (?)");
         insertPrep.setInt(1, 1);

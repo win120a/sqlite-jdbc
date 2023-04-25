@@ -45,7 +45,7 @@ public class ListenerTest {
     }
 
     @Test
-    public void testSetAndRemoveUpdateHook() throws Exception {
+    void testSetAndRemoveUpdateHook() throws Exception {
         final List<UpdateEvent> updates = new LinkedList<>();
 
         SQLiteUpdateListener listener =
@@ -97,7 +97,7 @@ public class ListenerTest {
      * @throws Exception on test failure
      */
     @Test
-    public void testMultiConnectionHook() throws Exception {
+    void testMultiConnectionHook() throws Exception {
         CountingSQLiteUpdateListener listener1 = new CountingSQLiteUpdateListener();
         CountingSQLiteUpdateListener listener2 = new CountingSQLiteUpdateListener();
         CountingSQLiteCommitListener commitListener1 = new CountingSQLiteCommitListener();
@@ -164,7 +164,7 @@ public class ListenerTest {
      * @throws Exception on test failure
      */
     @Test
-    public void testMultiInsertAndCommit() throws Exception {
+    void testMultiInsertAndCommit() throws Exception {
 
         CountingSQLiteUpdateListener updateListener = new CountingSQLiteUpdateListener();
         CountingSQLiteCommitListener commitListener = new CountingSQLiteCommitListener();
@@ -205,7 +205,7 @@ public class ListenerTest {
      * @throws Exception on test failure
      */
     @Test
-    public void testUpdateHandlerCleanup() throws Exception {
+    void testUpdateHandlerCleanup() throws Exception {
         SQLiteConnection sqliteConnection = connectionOne;
         final DB database = sqliteConnection.getDatabase();
 
@@ -229,7 +229,7 @@ public class ListenerTest {
      * @throws Exception on test failure
      */
     @Test
-    public void testCommitHandlerCleanup() throws Exception {
+    void testCommitHandlerCleanup() throws Exception {
         SQLiteConnection sqliteConnection = connectionOne;
         final DB database = sqliteConnection.getDatabase();
 
@@ -246,7 +246,7 @@ public class ListenerTest {
     }
 
     @Test
-    public void testConnectionCloseWithAutoCommitDisabledAndCommitListener() throws Exception {
+    void testConnectionCloseWithAutoCommitDisabledAndCommitListener() throws Exception {
         CountingSQLiteCommitListener commitListener = new CountingSQLiteCommitListener();
         connectionOne.setAutoCommit(false);
         connectionOne.addCommitListener(commitListener);

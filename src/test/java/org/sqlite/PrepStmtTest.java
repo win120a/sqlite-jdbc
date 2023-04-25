@@ -53,7 +53,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void update() throws SQLException {
+    void update() throws SQLException {
         assertThat(conn.prepareStatement("create table s1 (c1);").executeUpdate()).isEqualTo(0);
         PreparedStatement prep = conn.prepareStatement("insert into s1 values (?);");
         prep.setInt(1, 3);
@@ -73,7 +73,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void multiUpdate() throws SQLException {
+    void multiUpdate() throws SQLException {
         stat.executeUpdate("create table test (c1);");
         PreparedStatement prep = conn.prepareStatement("insert into test values (?);");
 
@@ -88,7 +88,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void emptyRS() throws SQLException {
+    void emptyRS() throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select null limit 0;");
         ResultSet rs = prep.executeQuery();
         assertThat(rs.next()).isFalse();
@@ -97,7 +97,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void singleRowRS() throws SQLException {
+    void singleRowRS() throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select ?;");
         prep.setInt(1, Integer.MAX_VALUE);
         ResultSet rs = prep.executeQuery();
@@ -112,7 +112,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void twoRowRS() throws SQLException {
+    void twoRowRS() throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select ? union all select ?;");
         prep.setDouble(1, Double.MAX_VALUE);
         prep.setDouble(2, Double.MIN_VALUE);
@@ -126,7 +126,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void stringRS() throws SQLException {
+    void stringRS() throws SQLException {
         String name = "Gandhi";
         PreparedStatement prep = conn.prepareStatement("select ?;");
         prep.setString(1, name);
@@ -139,13 +139,13 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void finalizePrep() throws SQLException {
+    void finalizePrep() throws SQLException {
         conn.prepareStatement("select null;");
         System.gc();
     }
 
     @Test
-    public void set() throws SQLException {
+    void set() throws SQLException {
         ResultSet rs;
         PreparedStatement prep = conn.prepareStatement("select ?, ?, ?;");
 
@@ -225,7 +225,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void colNameAccess() throws SQLException {
+    void colNameAccess() throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select ? as col1, ? as col2, ? as bingo;");
         prep.setNull(1, 0);
         prep.setFloat(2, Float.MIN_VALUE);
@@ -242,7 +242,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void insert1000() throws SQLException {
+    void insert1000() throws SQLException {
         stat.executeUpdate("create table in1000 (a);");
         PreparedStatement prep = conn.prepareStatement("insert into in1000 values (?);");
         conn.setAutoCommit(false);
@@ -259,7 +259,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void getObject() throws SQLException {
+    void getObject() throws SQLException {
         stat.executeUpdate(
                 "create table testobj ("
                         + "c1 integer, c2 float, c3, c4 varchar, c5 bit, c6, c7);");
@@ -305,7 +305,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void tokens() throws SQLException {
+    void tokens() throws SQLException {
         /* checks for a bug where a substring is read by the driver as the
          * full original string, caused by my idiocyin assuming the
          * pascal-style string was null terminated. Thanks Oliver Randschau. */
@@ -321,7 +321,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void utf() throws SQLException {
+    void utf() throws SQLException {
         ResultSet rs =
                 stat.executeQuery(
                         "select '"
@@ -390,7 +390,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void batch() throws SQLException {
+    void batch() throws SQLException {
         ResultSet rs;
 
         stat.executeUpdate("create table test (c1, c2, c3, c4);");
@@ -418,7 +418,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void testExecuteBatch() throws Exception {
+    void testExecuteBatch() throws Exception {
         stat.executeUpdate("create table t (c text);");
         PreparedStatement prep = conn.prepareStatement("insert into t values (?);");
         prep.setString(1, "a");
@@ -439,7 +439,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void dblock() throws SQLException {
+    void dblock() throws SQLException {
         stat.executeUpdate("create table test (c1);");
         stat.executeUpdate("insert into test values (1);");
         conn.prepareStatement("select * from test;").executeQuery().close();
@@ -447,7 +447,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void dbclose() throws SQLException {
+    void dbclose() throws SQLException {
         conn.prepareStatement("select ?;").setString(1, "Hello World");
         conn.prepareStatement("select null;").close();
         conn.prepareStatement("select null;").executeQuery().close();
@@ -456,7 +456,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void batchOneParam() throws SQLException {
+    void batchOneParam() throws SQLException {
         stat.executeUpdate("create table test (c1);");
         PreparedStatement prep = conn.prepareStatement("insert into test values (?);");
         for (int i = 0; i < 10; i++) {
@@ -472,7 +472,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void batchZeroParams() throws Exception {
+    void batchZeroParams() throws Exception {
         stat.executeUpdate("create table test (c1);");
         PreparedStatement prep = conn.prepareStatement("insert into test values (5);");
         for (int i = 0; i < 10; i++) {
@@ -487,13 +487,13 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void paramMetaData() throws SQLException {
+    void paramMetaData() throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select ?,?,?,?;");
         assertThat(prep.getParameterMetaData().getParameterCount()).isEqualTo(4);
     }
 
     @Test
-    public void metaData() throws SQLException {
+    void metaData() throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select ? as col1, ? as col2, ? as delta;");
         ResultSetMetaData meta = prep.getMetaData();
         assertThat(meta.getColumnCount()).isEqualTo(3);
@@ -513,7 +513,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void date1() throws SQLException {
+    void date1() throws SQLException {
         Date d1 = new Date(987654321);
 
         stat.execute("create table t (c1);");
@@ -529,7 +529,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void date2() throws SQLException {
+    void date2() throws SQLException {
         Date d1 = new Date(1092941466000L);
         stat.execute("create table t (c1);");
         PreparedStatement prep =
@@ -544,7 +544,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void changeSchema() throws SQLException {
+    void changeSchema() throws SQLException {
         stat.execute("create table t (c1);");
         PreparedStatement prep = conn.prepareStatement("insert into t values (?);");
         conn.createStatement().execute("create table t2 (c2);");
@@ -568,7 +568,7 @@ public class PrepStmtTest {
     //    }
 
     @Test
-    public void reusingSetValues() throws SQLException {
+    void reusingSetValues() throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select ?,?;");
         prep.setInt(1, 9);
 
@@ -593,7 +593,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void clearParameters() throws SQLException {
+    void clearParameters() throws SQLException {
         stat.executeUpdate(
                 "create table tbl (colid integer primary key AUTOINCREMENT, col varchar)");
         stat.executeUpdate("insert into tbl(col) values (\"foo\")");
@@ -628,7 +628,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void preparedStatementShouldNotThrowIfNotAllParamsSet() throws SQLException {
+    void preparedStatementShouldNotThrowIfNotAllParamsSet() throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select ? as col1, ? as col2, ? as col3;");
         ResultSetMetaData meta = prep.getMetaData();
 
@@ -642,7 +642,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void preparedStatementShouldNotThrowIfNotAllParamsSetBatch() throws SQLException {
+    void preparedStatementShouldNotThrowIfNotAllParamsSetBatch() throws SQLException {
         stat.executeUpdate("create table test (c1, c2);");
         PreparedStatement prep = conn.prepareStatement("insert into test values (?,?);");
 
@@ -653,26 +653,26 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void noSuchTable() {
+    void noSuchTable() {
         assertThatExceptionOfType(SQLException.class)
                 .isThrownBy(() -> conn.prepareStatement("select * from doesnotexist;"));
     }
 
     @Test
-    public void noSuchCol() {
+    void noSuchCol() {
         assertThatExceptionOfType(SQLException.class)
                 .isThrownBy(() -> conn.prepareStatement("select notacol from (select 1);"));
     }
 
     @Test
-    public void noSuchColName() throws SQLException {
+    void noSuchColName() throws SQLException {
         ResultSet rs = conn.prepareStatement("select 1;").executeQuery();
         assertThat(rs.next()).isTrue();
         assertThatExceptionOfType(SQLException.class).isThrownBy(() -> rs.getInt("noSuchColName"));
     }
 
     @Test
-    public void constraintErrorCodeExecute() throws SQLException {
+    void constraintErrorCodeExecute() throws SQLException {
         assertThat(
                         stat.executeUpdate(
                                 "create table foo (id integer, CONSTRAINT U_ID UNIQUE (id));"))
@@ -695,7 +695,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void constraintErrorCodeExecuteUpdate() throws SQLException {
+    void constraintErrorCodeExecuteUpdate() throws SQLException {
         assertThat(
                         stat.executeUpdate(
                                 "create table foo (id integer, CONSTRAINT U_ID UNIQUE (id));"))
@@ -717,7 +717,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void getMoreResultsDoesNotCloseStatement() throws SQLException {
+    void getMoreResultsDoesNotCloseStatement() throws SQLException {
         PreparedStatement ps = conn.prepareStatement("select ?");
         ps.setString(1, "Hello");
 
@@ -734,7 +734,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void gh810_getMoreResults_and_getUpdateCount() throws SQLException {
+    void gh810_getMoreResults_and_getUpdateCount() throws SQLException {
         stat.executeUpdate("create table t(i int)");
 
         PreparedStatement ps = conn.prepareStatement("update t set i = 0 where false");
@@ -745,7 +745,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void executeUpdateCount() throws SQLException {
+    void executeUpdateCount() throws SQLException {
         PreparedStatement ps1 = conn.prepareStatement("create table test (c1)");
         assertThat(ps1.execute()).isFalse();
 
@@ -761,7 +761,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void gh811_getMetadata_before_execution() throws SQLException {
+    void gh811_getMetadata_before_execution() throws SQLException {
         try (PreparedStatement ps = conn.prepareStatement("select 1")) {
             ps.executeQuery();
             ResultSetMetaData meta = ps.getMetaData();
@@ -779,7 +779,7 @@ public class PrepStmtTest {
     }
 
     @Test
-    public void getParameterTypeTest() throws SQLException {
+    void getParameterTypeTest() throws SQLException {
         stat.executeUpdate("create table t_int(i INT)");
 
         try (PreparedStatement ps = conn.prepareStatement("INSERT INTO t_int VALUES(?)")) {

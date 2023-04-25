@@ -1,7 +1,12 @@
 package org.sqlite;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchThrowable;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+import org.sqlite.core.DB;
+import org.sqlite.core.NativeDBHelper;
 
 import java.nio.file.Path;
 import java.sql.Connection;
@@ -12,13 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-import org.sqlite.core.DB;
-import org.sqlite.core.NativeDBHelper;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class BusyHandlerTest {
     private Connection conn;
@@ -214,7 +215,7 @@ public class BusyHandlerTest {
      * free, etc.
      */
     @Test
-    public void testRemovingBusyHandler() throws Exception {
+    void testRemovingBusyHandler() throws Exception {
 
         SQLiteConnection sqliteConnection = (SQLiteConnection) conn;
         setDummyHandler();
@@ -253,7 +254,7 @@ public class BusyHandlerTest {
      * application state globally rather than per connection.
      */
     @Test
-    public void testMultiThreaded() {
+    void testMultiThreaded() {
         List<CompletableFuture<?>> futures = new ArrayList<>();
         for (int threadNum = 0; threadNum < 4; threadNum++) {
             final int runnerNum = threadNum; // lambdas cannot take mutable ints

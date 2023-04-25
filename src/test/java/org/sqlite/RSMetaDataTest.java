@@ -42,12 +42,12 @@ public class RSMetaDataTest {
     }
 
     @Test
-    public void catalogName() throws SQLException {
+    void catalogName() throws SQLException {
         assertThat(meta.getCatalogName(1)).isEqualTo("People");
     }
 
     @Test
-    public void columns() throws SQLException {
+    void columns() throws SQLException {
         assertThat(meta.getColumnCount()).isEqualTo(3);
         assertThat(meta.getColumnName(1)).isEqualTo("pid");
         assertThat(meta.getColumnName(2)).isEqualTo("firstname");
@@ -64,7 +64,7 @@ public class RSMetaDataTest {
     }
 
     @Test
-    public void columnTypes() throws SQLException {
+    void columnTypes() throws SQLException {
         stat.executeUpdate(
                 "create table tbl (col1 INT, col2 INTEGER, col3 TINYINT, "
                         + "col4 SMALLINT, col5 MEDIUMINT, col6 BIGINT, col7 UNSIGNED BIG INT, "
@@ -136,7 +136,7 @@ public class RSMetaDataTest {
     }
 
     @Test
-    public void columTypeWithoutTable() throws SQLException {
+    void columTypeWithoutTable() throws SQLException {
         ResultSet rs =
                 stat.executeQuery(
                         "SELECT FALSE, 1, 3900000000, CAST(3900000000 AS BIGINT), CAST(3900000000 AS VARCHAR(50))");
@@ -163,7 +163,7 @@ public class RSMetaDataTest {
     }
 
     @Test
-    public void testGetColumnClassName() throws SQLException {
+    void testGetColumnClassName() throws SQLException {
         stat.executeUpdate(
                 "create table gh_541 (id int, DESCRIPTION varchar(40), price DOUBLE, data BLOB, bool BOOLEAN)");
         stat.executeUpdate("insert into gh_541 values (1, 'description', 28.4, null, True);");
@@ -177,7 +177,7 @@ public class RSMetaDataTest {
     }
 
     @Test
-    public void differentRS() throws SQLException {
+    void differentRS() throws SQLException {
         meta = stat.executeQuery("select * from people;").getMetaData();
         assertThat(meta.getColumnCount()).isEqualTo(4);
         assertThat(meta.getColumnName(1)).isEqualTo("pid");
@@ -187,7 +187,7 @@ public class RSMetaDataTest {
     }
 
     @Test
-    public void nullable() throws SQLException {
+    void nullable() throws SQLException {
         meta = stat.executeQuery("select * from film;").getMetaData();
         assertThat(meta.isNullable(1)).isEqualTo(ResultSetMetaData.columnNullable);
         assertThat(meta.isNullable(2)).isEqualTo(ResultSetMetaData.columnNoNulls);
@@ -196,23 +196,23 @@ public class RSMetaDataTest {
     }
 
     @Test
-    public void badCatalogIndex() {
+    void badCatalogIndex() {
         assertThatExceptionOfType(SQLException.class).isThrownBy(() -> meta.getCatalogName(4));
     }
 
     @Test
-    public void badColumnIndex() {
+    void badColumnIndex() {
         assertThatExceptionOfType(SQLException.class).isThrownBy(() -> meta.getColumnName(4));
     }
 
     @Test
-    public void scale() throws SQLException {
+    void scale() throws SQLException {
         assertThat(meta.getScale(2)).isEqualTo(0);
         assertThat(meta.getScale(3)).isEqualTo(5);
     }
 
     @Test
-    public void tableName() throws SQLException {
+    void tableName() throws SQLException {
         final ResultSet rs = stat.executeQuery("SELECT pid, time(dob) as some_time from people");
         assertThat(rs.getMetaData().getTableName(1)).isEqualTo("People");
         assertThat(rs.getMetaData().getTableName(2)).isEqualTo("");

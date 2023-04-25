@@ -41,22 +41,22 @@ public class ReadUncommittedTest {
     }
 
     @Test
-    public void setReadUncommitted() throws SQLException {
+    void setReadUncommitted() throws SQLException {
         conn.setTransactionIsolation(SQLiteConnection.TRANSACTION_READ_UNCOMMITTED);
     }
 
     @Test
-    public void setSerializable() throws SQLException {
+    void setSerializable() throws SQLException {
         conn.setTransactionIsolation(SQLiteConnection.TRANSACTION_SERIALIZABLE);
     }
 
     @Test
-    public void setIsolationPromotedToSerializable() throws SQLException {
+    void setIsolationPromotedToSerializable() throws SQLException {
         conn.setTransactionIsolation(SQLiteConnection.TRANSACTION_REPEATABLE_READ);
     }
 
     @Test
-    public void setReadUncommittedWithConfig() throws SQLException {
+    void setReadUncommittedWithConfig() throws SQLException {
         // Override original setup
         Properties prop = new Properties();
         prop.setProperty("shared_cache", "true");

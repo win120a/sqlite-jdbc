@@ -20,7 +20,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_Test() throws SQLException {
+    void json_Test() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -32,7 +32,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_object_Test1() throws SQLException {
+    void json_object_Test1() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -42,7 +42,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_object_Test2() throws SQLException {
+    void json_object_Test2() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -53,7 +53,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_object_Test3() throws SQLException {
+    void json_object_Test3() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -64,7 +64,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_object_Test4() throws SQLException {
+    void json_object_Test4() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs = conn.createStatement().executeQuery("select json_object('a',2,'c',4)");
@@ -73,7 +73,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_object_Test5() throws SQLException {
+    void json_object_Test5() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs = conn.createStatement().executeQuery("select json_object('a',2,'c','{e:5}')");
@@ -82,7 +82,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_object_Test6() throws SQLException {
+    void json_object_Test6() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -93,7 +93,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_array_Test1() throws SQLException {
+    void json_array_Test1() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs = conn.createStatement().executeQuery("select json_array(1,2,'3',4)");
@@ -102,7 +102,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_array_Test2() throws SQLException {
+    void json_array_Test2() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs = conn.createStatement().executeQuery("select json_array('[1,2]')");
@@ -111,7 +111,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_array_Test3() throws SQLException {
+    void json_array_Test3() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs = conn.createStatement().executeQuery("select json_array(json_array(1,2))");
@@ -120,7 +120,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_array_Test4() throws SQLException {
+    void json_array_Test4() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -131,7 +131,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_array_Test5() throws SQLException {
+    void json_array_Test5() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -143,7 +143,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_array_length_Test1() throws SQLException {
+    void json_array_length_Test1() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs = conn.createStatement().executeQuery("select json_array_length('[1,2,3,4]')");
@@ -152,7 +152,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_array_length_Test2() throws SQLException {
+    void json_array_length_Test2() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -162,7 +162,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_array_length_Test3() throws SQLException {
+    void json_array_length_Test3() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -173,7 +173,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_array_length_Test4() throws SQLException {
+    void json_array_length_Test4() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -184,7 +184,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_array_length_Test5() throws SQLException {
+    void json_array_length_Test5() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -195,7 +195,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_array_length_Test6() throws SQLException {
+    void json_array_length_Test6() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -206,7 +206,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_extract_Test1() throws SQLException {
+    void json_extract_Test1() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -218,7 +218,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_extract_Test2() throws SQLException {
+    void json_extract_Test2() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -230,7 +230,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_extract_Test3() throws SQLException {
+    void json_extract_Test3() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -242,7 +242,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_extract_Test4() throws SQLException {
+    void json_extract_Test4() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -254,7 +254,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_extract_Test5() throws SQLException {
+    void json_extract_Test5() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -266,7 +266,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_extract_Test6() throws SQLException {
+    void json_extract_Test6() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -278,7 +278,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_extract_Test7() throws SQLException {
+    void json_extract_Test7() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -290,7 +290,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_insert_Test1() throws SQLException {
+    void json_insert_Test1() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -301,7 +301,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_insert_Test2() throws SQLException {
+    void json_insert_Test2() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -312,7 +312,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_replace_Test1() throws SQLException {
+    void json_replace_Test1() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -323,7 +323,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_replace_Test2() throws SQLException {
+    void json_replace_Test2() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -334,7 +334,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_set_Test1() throws SQLException {
+    void json_set_Test1() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -345,7 +345,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_set_Test2() throws SQLException {
+    void json_set_Test2() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -356,7 +356,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_set_Test3() throws SQLException {
+    void json_set_Test3() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -367,7 +367,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_set_Test4() throws SQLException {
+    void json_set_Test4() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -379,7 +379,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_set_Test5() throws SQLException {
+    void json_set_Test5() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -391,7 +391,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_remove_Test1() throws SQLException {
+    void json_remove_Test1() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -401,7 +401,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_remove_Test2() throws SQLException {
+    void json_remove_Test2() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -412,7 +412,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_remove_Test3() throws SQLException {
+    void json_remove_Test3() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -423,7 +423,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_remove_Test4() throws SQLException {
+    void json_remove_Test4() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -433,7 +433,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_remove_Test5() throws SQLException {
+    void json_remove_Test5() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -444,7 +444,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_remove_Test6() throws SQLException {
+    void json_remove_Test6() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -455,7 +455,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_remove_Test7() throws SQLException {
+    void json_remove_Test7() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -466,7 +466,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_type_Test1() throws SQLException {
+    void json_type_Test1() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -477,7 +477,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_type_Test2() throws SQLException {
+    void json_type_Test2() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -489,7 +489,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_type_Test3() throws SQLException {
+    void json_type_Test3() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -501,7 +501,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_type_Test4() throws SQLException {
+    void json_type_Test4() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -513,7 +513,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_type_Test5() throws SQLException {
+    void json_type_Test5() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -525,7 +525,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_type_Test6() throws SQLException {
+    void json_type_Test6() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -537,7 +537,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_type_Test7() throws SQLException {
+    void json_type_Test7() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -549,7 +549,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_type_Test8() throws SQLException {
+    void json_type_Test8() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -561,7 +561,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_type_Test9() throws SQLException {
+    void json_type_Test9() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -573,7 +573,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_type_Test10() throws SQLException {
+    void json_type_Test10() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs =
@@ -585,7 +585,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_valid_Test1() throws SQLException {
+    void json_valid_Test1() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs = conn.createStatement().executeQuery("select json_valid('{\"x\":35}')");
@@ -594,7 +594,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_valid_Test2() throws SQLException {
+    void json_valid_Test2() throws SQLException {
         Connection conn = getConnection();
 
         ResultSet rs = conn.createStatement().executeQuery("select json_valid('{\"x\":35')");
@@ -603,7 +603,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_each_Test1() throws SQLException {
+    void json_each_Test1() throws SQLException {
         Connection conn = getConnection();
 
         conn.createStatement().execute("create table user (name, phone)");
@@ -635,7 +635,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_each_Test2() throws SQLException {
+    void json_each_Test2() throws SQLException {
         Connection conn = getConnection();
 
         conn.createStatement().execute("create table user (name, phone)");
@@ -664,7 +664,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_tree_Test1() throws SQLException {
+    void json_tree_Test1() throws SQLException {
         Connection conn = getConnection();
 
         conn.createStatement().execute("create table big (json JSON)");
@@ -691,7 +691,7 @@ public class JSON1Test {
     }
 
     @Test
-    public void json_tree_Test2() throws SQLException {
+    void json_tree_Test2() throws SQLException {
         Connection conn = getConnection();
 
         conn.createStatement().execute("create table big (json JSON)");

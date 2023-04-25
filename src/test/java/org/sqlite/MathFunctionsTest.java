@@ -31,7 +31,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void acos() throws Exception {
+    void acos() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select acos(0.5)");
         assertThat(rs.next()).isTrue();
@@ -40,7 +40,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void acosh() throws Exception {
+    void acosh() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select acosh(10)");
         assertThat(rs.next()).isTrue();
@@ -49,7 +49,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void asin() throws Exception {
+    void asin() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select asin(0.5)");
         assertThat(rs.next()).isTrue();
@@ -58,7 +58,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void asinh() throws Exception {
+    void asinh() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select asinh(10)");
         assertThat(rs.next()).isTrue();
@@ -67,7 +67,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void atan() throws Exception {
+    void atan() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select atan(1)");
         assertThat(rs.next()).isTrue();
@@ -76,7 +76,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void atan2() throws Exception {
+    void atan2() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select atan2(1,5)");
         assertThat(rs.next()).isTrue();
@@ -85,7 +85,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void atn2() throws Exception {
+    void atn2() throws Exception {
         Utils.assumeJdbcExtensions(conn);
         ResultSet rs = stat.executeQuery("select atn2(1,5)");
         assertThat(rs.next()).isTrue();
@@ -94,7 +94,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void atanh() throws Exception {
+    void atanh() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select atanh(0.5)");
         assertThat(rs.next()).isTrue();
@@ -103,7 +103,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void ceil() throws Exception {
+    void ceil() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select ceil(0.5)");
         assertThat(rs.next()).isTrue();
@@ -112,7 +112,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void cos() throws Exception {
+    void cos() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select cos(radians(45))");
         assertThat(rs.next()).isTrue();
@@ -121,7 +121,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void cosh() throws Exception {
+    void cosh() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select cosh(0.5)");
         assertThat(rs.next()).isTrue();
@@ -130,7 +130,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void cot() throws Exception {
+    void cot() throws Exception {
         Utils.assumeJdbcExtensions(conn);
         ResultSet rs = stat.executeQuery("select cot(0.5)");
         assertThat(rs.next()).isTrue();
@@ -139,7 +139,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void coth() throws Exception {
+    void coth() throws Exception {
         Utils.assumeJdbcExtensions(conn);
         ResultSet rs = stat.executeQuery("select coth(0.5)");
         assertThat(rs.next()).isTrue();
@@ -148,7 +148,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void degrees() throws Exception {
+    void degrees() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select degrees(pi()/2)");
         assertThat(rs.next()).isTrue();
@@ -157,7 +157,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void exp() throws Exception {
+    void exp() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select exp(1)");
         assertThat(rs.next()).isTrue();
@@ -166,7 +166,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void floor() throws Exception {
+    void floor() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select floor(1.5)");
         assertThat(rs.next()).isTrue();
@@ -185,7 +185,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void ln() throws Exception {
+    void ln() throws Exception {
         Utils.assumeMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select ln(2)");
         assertThat(rs.next()).isTrue();
@@ -194,7 +194,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void logBase() throws Exception {
+    void logBase() throws Exception {
         Utils.assumeMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select log(3,3)");
         assertThat(rs.next()).isTrue();
@@ -203,7 +203,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void log2() throws Exception {
+    void log2() throws Exception {
         Utils.assumeMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select log2(2)");
         assertThat(rs.next()).isTrue();
@@ -212,7 +212,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void log10() throws Exception {
+    void log10() throws Exception {
         Utils.assumeMathFunctions(conn);
         {
             ResultSet rs = stat.executeQuery("select log10(10)");
@@ -229,7 +229,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void mod() throws Exception {
+    void mod() throws Exception {
         Utils.assumeMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select mod(11,3.5)");
         assertThat(rs.next()).isTrue();
@@ -238,7 +238,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void pi() throws Exception {
+    void pi() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select pi()");
         assertThat(rs.next()).isTrue();
@@ -250,7 +250,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void power() throws Exception {
+    void power() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         {
             ResultSet rs = stat.executeQuery("select pow(10,2)");
@@ -267,7 +267,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void radians() throws Exception {
+    void radians() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select radians(45)");
         assertThat(rs.next()).isTrue();
@@ -276,7 +276,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void sin() throws Exception {
+    void sin() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select sin(radians(30))");
         assertThat(rs.next()).isTrue();
@@ -285,7 +285,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void sinh() throws Exception {
+    void sinh() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select sinh(0.5)");
         assertThat(rs.next()).isTrue();
@@ -294,7 +294,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void sqrt() throws Exception {
+    void sqrt() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select sqrt(4)");
         assertThat(rs.next()).isTrue();
@@ -303,7 +303,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void square() throws Exception {
+    void square() throws Exception {
         Utils.assumeJdbcExtensions(conn);
         ResultSet rs = stat.executeQuery("select square(4)");
         assertThat(rs.next()).isTrue();
@@ -312,7 +312,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void tan() throws Exception {
+    void tan() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select tan(0.5)");
         assertThat(rs.next()).isTrue();
@@ -321,7 +321,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void tanh() throws Exception {
+    void tanh() throws Exception {
         Utils.assumeJdbcExtensionsOrMathFunctions(conn);
         ResultSet rs = stat.executeQuery("select tanh(0.5)");
         assertThat(rs.next()).isTrue();
@@ -330,7 +330,7 @@ public class MathFunctionsTest {
     }
 
     @Test
-    public void trunc() throws Exception {
+    void trunc() throws Exception {
         Utils.assumeMathFunctions(conn);
         {
             ResultSet rs = stat.executeQuery("select trunc(1.5)");

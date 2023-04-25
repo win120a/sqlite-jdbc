@@ -120,17 +120,17 @@ public class TransactionTest {
     }
 
     @Test
-    public void failedUpdatePreventedFutureRollbackUnprepared() throws SQLException {
+    void failedUpdatePreventedFutureRollbackUnprepared() throws SQLException {
         failedUpdatedPreventedFutureRollback(false);
     }
 
     @Test
-    public void failedUpdatePreventedFutureRollbackPrepared() throws SQLException {
+    void failedUpdatePreventedFutureRollbackPrepared() throws SQLException {
         failedUpdatedPreventedFutureRollback(true);
     }
 
     @Test
-    public void multiConn() throws SQLException {
+    void multiConn() throws SQLException {
         stat1.executeUpdate("create table test (c1);");
         stat1.executeUpdate("insert into test values (1);");
         stat2.executeUpdate("insert into test values (2);");
@@ -148,14 +148,14 @@ public class TransactionTest {
     }
 
     @Test
-    public void locking() throws SQLException {
+    void locking() throws SQLException {
         stat1.executeUpdate("create table test (c1);");
         stat1.executeUpdate("begin immediate;");
         stat2.executeUpdate("select * from test;");
     }
 
     @Test
-    public void insert() throws SQLException {
+    void insert() throws SQLException {
         ResultSet rs;
         String countSql = "select count(*) from trans;";
 
@@ -184,7 +184,7 @@ public class TransactionTest {
     }
 
     @Test
-    public void rollback() throws SQLException {
+    void rollback() throws SQLException {
         String select = "select * from trans;";
         ResultSet rs;
 
@@ -204,7 +204,7 @@ public class TransactionTest {
     }
 
     @Test
-    public void multiRollback() throws SQLException {
+    void multiRollback() throws SQLException {
         ResultSet rs;
 
         stat1.executeUpdate("create table t (c1);");
@@ -242,7 +242,7 @@ public class TransactionTest {
     }
 
     @Test
-    public void transactionsDontMindReads() throws SQLException {
+    void transactionsDontMindReads() throws SQLException {
         stat1.executeUpdate("create table t (c1);");
         stat1.executeUpdate("insert into t values (1);");
         stat1.executeUpdate("insert into t values (2);");
@@ -257,7 +257,7 @@ public class TransactionTest {
     }
 
     @Test
-    public void secondConnWillWait() throws Exception {
+    void secondConnWillWait() throws Exception {
         stat1.executeUpdate("create table t (c1);");
         stat1.executeUpdate("insert into t values (1);");
         stat1.executeUpdate("insert into t values (2);");
@@ -296,7 +296,7 @@ public class TransactionTest {
     }
 
     @Test
-    public void secondConnMustTimeout() throws SQLException {
+    void secondConnMustTimeout() throws SQLException {
         stat1.setQueryTimeout(1);
         stat1.executeUpdate("create table t (c1);");
         stat1.executeUpdate("insert into t values (1);");
@@ -312,7 +312,7 @@ public class TransactionTest {
 
     //    @Test(expected= SQLException.class)
     @Test
-    public void cantUpdateWhileReading() throws SQLException {
+    void cantUpdateWhileReading() throws SQLException {
         stat1.executeUpdate("create table t (c1);");
         stat1.executeUpdate("insert into t values (1);");
         stat1.executeUpdate("insert into t values (2);");
@@ -324,17 +324,17 @@ public class TransactionTest {
     }
 
     @Test
-    public void cantCommit() {
+    void cantCommit() {
         assertThatExceptionOfType(SQLException.class).isThrownBy(() -> conn1.commit());
     }
 
     @Test
-    public void cantRollback() {
+    void cantRollback() {
         assertThatExceptionOfType(SQLException.class).isThrownBy(() -> conn1.rollback());
     }
 
     @Test
-    public void transactionModes(@TempDir File tempDir) throws Exception {
+    void transactionModes(@TempDir File tempDir) throws Exception {
         File tmpFile = File.createTempFile("test-trans", ".db", tempDir);
 
         SQLiteDataSource ds = new SQLiteDataSource();

@@ -13,7 +13,7 @@ public class TypeMapTest {
     }
 
     @Test
-    public void getTypeMap() throws Exception {
+    void getTypeMap() throws Exception {
         Connection conn = getConnection();
 
         Map<String, Class<?>> m = conn.getTypeMap();
@@ -22,7 +22,7 @@ public class TypeMapTest {
     }
 
     @Test
-    public void setTypeMap() throws Exception {
+    void setTypeMap() throws Exception {
         Connection conn = getConnection();
 
         Map<String, Class<?>> m = conn.getTypeMap();

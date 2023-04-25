@@ -48,7 +48,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getTables() throws SQLException {
+    void getTables() throws SQLException {
         ResultSet rs = meta.getTables(null, null, null, null);
         assertThat(rs).isNotNull();
 
@@ -99,7 +99,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getTablesWithEscape() throws SQLException {
+    void getTablesWithEscape() throws SQLException {
         stat.executeUpdate("create table 'table%with%wildcards'(c1 integer)");
         stat.executeUpdate("create table 'table_with_wildcards'(c2 integer)");
         stat.executeUpdate("create table 'tableXwithXwildcards'(c3 integer)");
@@ -120,7 +120,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getTableTypes() throws SQLException {
+    void getTableTypes() throws SQLException {
         ResultSet rs = meta.getTableTypes();
         assertThat(rs).isNotNull();
         assertThat(rs.next()).isTrue();
@@ -135,7 +135,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getTypeInfo() throws SQLException {
+    void getTypeInfo() throws SQLException {
         ResultSet rs = meta.getTypeInfo();
         assertThat(rs).isNotNull();
 
@@ -268,7 +268,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getColumns() throws SQLException {
+    void getColumns() throws SQLException {
         ResultSet rs = meta.getColumns(null, null, "test", "id");
         assertThat(rs.next()).isTrue();
         assertThat(rs.getString("TABLE_NAME")).isEqualTo("test");
@@ -479,7 +479,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getColumnsIncludingGenerated() throws SQLException {
+    void getColumnsIncludingGenerated() throws SQLException {
         stat.executeUpdate("create table gh_724 (i integer,j integer generated always as (i))");
 
         ResultSet rs = meta.getColumns(null, null, "gh_724", "%");
@@ -493,7 +493,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getColumnsWithEscape() throws SQLException {
+    void getColumnsWithEscape() throws SQLException {
         stat.executeUpdate("create table wildcard(col1 integer, co_1 integer, 'co%1' integer)");
 
         String esc = meta.getSearchStringEscape();
@@ -512,7 +512,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void numberOfgetImportedKeysCols() throws SQLException {
+    void numberOfgetImportedKeysCols() throws SQLException {
 
         stat.executeUpdate("create table parent (id1 integer, id2 integer, primary key(id1, id2))");
         stat.executeUpdate(
@@ -567,7 +567,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void numberOfgetExportedKeysCols() throws SQLException {
+    void numberOfgetExportedKeysCols() throws SQLException {
 
         stat.executeUpdate("create table parent (id1 integer, id2 integer, primary key(id1, id2))");
         stat.executeUpdate(
@@ -618,7 +618,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getExportedKeysColsForNamedKeys() throws SQLException {
+    void getExportedKeysColsForNamedKeys() throws SQLException {
 
         ResultSet exportedKeys;
 
@@ -665,7 +665,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getImportedKeysMultipleColumns() throws SQLException {
+    void getImportedKeysMultipleColumns() throws SQLException {
         ResultSet importedKeys;
         stat.executeUpdate(
                 "CREATE TABLE PONE ( ID_FIRST_ONE INTEGER NOT NULL, ID_SECOND_ONE INTEGER NOT NULL, ADDITIONAL_ONE TEXT, CONSTRAINT PONE_PK PRIMARY KEY (ID_FIRST_ONE, ID_SECOND_ONE) )");
@@ -713,7 +713,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getImportedKeysColsForNamedKeys() throws SQLException {
+    void getImportedKeysColsForNamedKeys() throws SQLException {
 
         ResultSet importedKeys;
 
@@ -761,7 +761,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getImportedKeysColsForMixedCaseDefinition() throws SQLException {
+    void getImportedKeysColsForMixedCaseDefinition() throws SQLException {
 
         ResultSet importedKeys;
 
@@ -788,7 +788,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getImportedKeysColsForMultipleImports() throws SQLException {
+    void getImportedKeysColsForMultipleImports() throws SQLException {
 
         ResultSet importedKeys;
 
@@ -856,7 +856,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getImportedKeysCols2() throws SQLException {
+    void getImportedKeysCols2() throws SQLException {
 
         stat.executeUpdate(
                 "CREATE TABLE Authors (Id INTEGER NOT NULL, Name VARCHAR(20) NOT NULL, "
@@ -935,7 +935,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getExportedKeysColsForMultipleImports() throws SQLException {
+    void getExportedKeysColsForMultipleImports() throws SQLException {
 
         ResultSet exportedKeys;
 
@@ -970,7 +970,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getImportedKeysWithIncorrectReference() throws SQLException {
+    void getImportedKeysWithIncorrectReference() throws SQLException {
 
         stat.executeUpdate(
                 "create table child (id1 integer, id2 integer, foreign key(id1) references parent(id1))");
@@ -990,7 +990,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void columnOrderOfgetTables() throws SQLException {
+    void columnOrderOfgetTables() throws SQLException {
 
         stat.executeUpdate(
                 "CREATE TABLE TABLE1 (ID1 INTEGER PRIMARY KEY AUTOINCREMENT, ID2 INTEGER)");
@@ -1049,7 +1049,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void columnOrderOfgetTableTypes() throws SQLException {
+    void columnOrderOfgetTableTypes() throws SQLException {
         ResultSet rs = meta.getTableTypes();
         assertThat(rs.next()).isTrue();
         ResultSetMetaData rsmeta = rs.getMetaData();
@@ -1058,7 +1058,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void columnOrderOfgetTypeInfo() throws SQLException {
+    void columnOrderOfgetTypeInfo() throws SQLException {
         ResultSet rs = meta.getTypeInfo();
         assertThat(rs.next()).isTrue();
         ResultSetMetaData rsmeta = rs.getMetaData();
@@ -1084,7 +1084,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void columnOrderOfgetColumns() throws SQLException {
+    void columnOrderOfgetColumns() throws SQLException {
         ResultSet rs = meta.getColumns(null, null, "test", null);
         assertThat(rs.next()).isTrue();
         ResultSetMetaData rsmeta = rs.getMetaData();
@@ -1121,7 +1121,7 @@ public class DBMetaDataTest {
     // do not bother testing their parameters, only the column types
 
     @Test
-    public void columnOrderOfgetProcedures() throws SQLException {
+    void columnOrderOfgetProcedures() throws SQLException {
         ResultSet rs = meta.getProcedures(null, null, null);
         assertThat(rs.next()).isFalse();
         ResultSetMetaData rsmeta = rs.getMetaData();
@@ -1135,7 +1135,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void columnOrderOfgetProcedurColumns() throws SQLException {
+    void columnOrderOfgetProcedurColumns() throws SQLException {
         ResultSet rs = meta.getProcedureColumns(null, null, null, null);
         assertThat(rs.next()).isFalse();
         ResultSetMetaData rsmeta = rs.getMetaData();
@@ -1156,7 +1156,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void columnOrderOfgetSchemas() throws SQLException {
+    void columnOrderOfgetSchemas() throws SQLException {
         ResultSet rs = meta.getSchemas();
         assertThat(rs.next()).isFalse();
         ResultSetMetaData rsmeta = rs.getMetaData();
@@ -1166,7 +1166,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void columnOrderOfgetCatalogs() throws SQLException {
+    void columnOrderOfgetCatalogs() throws SQLException {
         ResultSet rs = meta.getCatalogs();
         assertThat(rs.next()).isFalse();
         ResultSetMetaData rsmeta = rs.getMetaData();
@@ -1175,7 +1175,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void columnOrderOfgetColumnPrivileges() throws SQLException {
+    void columnOrderOfgetColumnPrivileges() throws SQLException {
         ResultSet rs = meta.getColumnPrivileges(null, null, null, null);
         assertThat(rs.next()).isFalse();
         ResultSetMetaData rsmeta = rs.getMetaData();
@@ -1191,7 +1191,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void columnOrderOfgetTablePrivileges() throws SQLException {
+    void columnOrderOfgetTablePrivileges() throws SQLException {
         ResultSet rs = meta.getTablePrivileges(null, null, null);
         assertThat(rs.next()).isFalse();
         ResultSetMetaData rsmeta = rs.getMetaData();
@@ -1206,7 +1206,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void columnOrderOfgetBestRowIdentifier() throws SQLException {
+    void columnOrderOfgetBestRowIdentifier() throws SQLException {
         ResultSet rs = meta.getBestRowIdentifier(null, null, null, 0, false);
         assertThat(rs.next()).isFalse();
         ResultSetMetaData rsmeta = rs.getMetaData();
@@ -1222,7 +1222,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void columnOrderOfgetVersionColumns() throws SQLException {
+    void columnOrderOfgetVersionColumns() throws SQLException {
         ResultSet rs = meta.getVersionColumns(null, null, null);
         assertThat(rs.next()).isFalse();
         ResultSetMetaData rsmeta = rs.getMetaData();
@@ -1238,7 +1238,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void viewIngetPrimaryKeys() throws SQLException {
+    void viewIngetPrimaryKeys() throws SQLException {
         ResultSet rs;
 
         stat.executeUpdate("create table t1 (c1, c2, c3);");
@@ -1249,7 +1249,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void moreOfgetColumns() throws SQLException {
+    void moreOfgetColumns() throws SQLException {
         ResultSet rs;
 
         stat.executeUpdate("create table tabcols1 (col1, col2);");
@@ -1302,7 +1302,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void autoincrement() throws SQLException {
+    void autoincrement() throws SQLException {
         ResultSet rs;
 
         // no autoincrement no rowid
@@ -1358,7 +1358,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void columnOrderOfgetPrimaryKeys() throws Exception {
+    void columnOrderOfgetPrimaryKeys() throws Exception {
         ResultSet rs;
         ResultSetMetaData rsmeta;
 
@@ -1465,7 +1465,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void columnOrderOfgetImportedKeys() throws SQLException {
+    void columnOrderOfgetImportedKeys() throws SQLException {
 
         stat.executeUpdate("create table person (id integer)");
         stat.executeUpdate(
@@ -1490,7 +1490,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void columnOrderOfgetExportedKeys() throws SQLException {
+    void columnOrderOfgetExportedKeys() throws SQLException {
 
         stat.executeUpdate("create table person (id integer primary key)");
         stat.executeUpdate(
@@ -1529,7 +1529,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void columnOrderOfgetCrossReference() throws SQLException {
+    void columnOrderOfgetCrossReference() throws SQLException {
         stat.executeUpdate("create table person (id integer)");
         stat.executeUpdate(
                 "create table address (pid integer, name, foreign key(pid) references person(id))");
@@ -1548,7 +1548,7 @@ public class DBMetaDataTest {
     @Test public void columnOrderOfgetAttributes() throws SQLException {*/
 
     @Test
-    public void columnOrderOfgetUDTs() throws SQLException {
+    void columnOrderOfgetUDTs() throws SQLException {
         ResultSet rs = meta.getUDTs(null, null, null, null);
         assertThat(rs.next()).isFalse();
         ResultSetMetaData rsmeta = rs.getMetaData();
@@ -1563,14 +1563,14 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getIndexInfoOnTest() throws SQLException {
+    void getIndexInfoOnTest() throws SQLException {
         ResultSet rs = meta.getIndexInfo(null, null, "test", false, false);
 
         assertThat(rs).isNotNull();
     }
 
     @Test
-    public void getIndexInfoIndexedSingle() throws SQLException {
+    void getIndexInfoIndexedSingle() throws SQLException {
         stat.executeUpdate(
                 "create table testindex (id integer primary key, fn float default 0.0, sn not null);");
         stat.executeUpdate("create index testindex_idx on testindex (sn);");
@@ -1583,7 +1583,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getIndexInfoIndexedSingleExpr() throws SQLException {
+    void getIndexInfoIndexedSingleExpr() throws SQLException {
         stat.executeUpdate(
                 "create table testindex (id integer primary key, fn float default 0.0, sn not null);");
         stat.executeUpdate("create index testindex_idx on testindex (sn, fn/2);");
@@ -1596,7 +1596,7 @@ public class DBMetaDataTest {
     }
 
     @Test
-    public void getIndexInfoIndexedMulti() throws SQLException {
+    void getIndexInfoIndexedMulti() throws SQLException {
         stat.executeUpdate(
                 "create table testindex (id integer primary key, fn float default 0.0, sn not null);");
         stat.executeUpdate("create index testindex_idx on testindex (sn);");

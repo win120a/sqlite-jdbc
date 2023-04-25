@@ -32,7 +32,7 @@ public class OSInfoTest {
     private static final Logger logger = Logger.getLogger(OSInfoTest.class.getName());
 
     @Test
-    public void osName() {
+    void osName() {
         assertThat(OSInfo.translateOSNameToFolderName("Windows XP")).isEqualTo("Windows");
         assertThat(OSInfo.translateOSNameToFolderName("Windows 2000")).isEqualTo("Windows");
         assertThat(OSInfo.translateOSNameToFolderName("Windows Vista")).isEqualTo("Windows");
@@ -51,7 +51,7 @@ public class OSInfoTest {
     }
 
     @Test
-    public void archName() {
+    void archName() {
         assertThat(OSInfo.translateArchNameToFolderName("i386")).isEqualTo("i386");
         assertThat(OSInfo.translateArchNameToFolderName("x86")).isEqualTo("x86");
         assertThat(OSInfo.translateArchNameToFolderName("ppc")).isEqualTo("ppc");
@@ -59,7 +59,7 @@ public class OSInfoTest {
     }
 
     @Test
-    public void folderPath() {
+    void folderPath() {
         String[] component = OSInfo.getNativeLibFolderPathForCurrentOS().split("/");
         assertThat(component.length).isEqualTo(2);
         assertThat(component[0]).isEqualTo(OSInfo.getOSName());
@@ -67,7 +67,7 @@ public class OSInfoTest {
     }
 
     @Test
-    public void testMainForOSName() {
+    void testMainForOSName() {
 
         // preserve the current System.out
         PrintStream out = System.out;
@@ -85,7 +85,7 @@ public class OSInfoTest {
     }
 
     @Test
-    public void testMainForArchName() {
+    void testMainForArchName() {
 
         // preserver the current System.out
         PrintStream out = System.out;
@@ -103,7 +103,7 @@ public class OSInfoTest {
     }
 
     @Test
-    public void displayOSInfo() {
+    void displayOSInfo() {
         logger.info("Hardware name: " + OSInfo.getHardwareName());
         logger.info("OS name: " + OSInfo.getOSName());
         logger.info("Architecture name: " + OSInfo.getArchName());
@@ -118,7 +118,7 @@ public class OSInfoTest {
     }
 
     @Test
-    public void testIsAndroidTermux() throws Exception {
+    void testIsAndroidTermux() throws Exception {
         try {
             ProcessRunner mockRunner = mock(ProcessRunner.class);
             OSInfo.processRunner = mockRunner;

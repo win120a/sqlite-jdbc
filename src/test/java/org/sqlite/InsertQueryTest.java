@@ -103,12 +103,12 @@ public class InsertQueryTest {
     }
 
     @Test
-    public void insertLockTestUsingSharedConnection() throws Exception {
+    void insertLockTestUsingSharedConnection() throws Exception {
         insertAndQuery(new SharedConnectionFactory());
     }
 
     @Test
-    public void insertLockTestUsingIndependentConnection() throws Exception {
+    void insertLockTestUsingIndependentConnection() throws Exception {
         insertAndQuery(new IndependentConnectionFactory());
     }
 
@@ -183,7 +183,7 @@ public class InsertQueryTest {
 
     @Disabled("Not sure this worked recently, the second query cannot find the table 'sample'")
     @Test
-    public void reproduceDatabaseLocked() throws SQLException {
+    void reproduceDatabaseLocked() throws SQLException {
         Connection conn = DriverManager.getConnection("jdbc:sqlite:" + dbName);
         Connection conn2 = DriverManager.getConnection("jdbc:sqlite:" + dbName);
         Statement stat = conn.createStatement();

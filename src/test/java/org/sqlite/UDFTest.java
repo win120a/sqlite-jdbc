@@ -37,7 +37,7 @@ public class UDFTest {
     }
 
     @Test
-    public void calling() throws SQLException {
+    void calling() throws SQLException {
         Function.create(
                 conn,
                 "f1",
@@ -52,7 +52,7 @@ public class UDFTest {
     }
 
     @Test
-    public void returning() throws SQLException {
+    void returning() throws SQLException {
         Function.create(
                 conn,
                 "f2",
@@ -76,7 +76,7 @@ public class UDFTest {
     }
 
     @Test
-    public void accessArgs() throws SQLException {
+    void accessArgs() throws SQLException {
         Function.create(
                 conn,
                 "f3",
@@ -95,7 +95,7 @@ public class UDFTest {
     }
 
     @Test
-    public void multipleArgs() throws SQLException {
+    void multipleArgs() throws SQLException {
         Function.create(
                 conn,
                 "f4",
@@ -123,7 +123,7 @@ public class UDFTest {
     }
 
     @Test
-    public void returnTypes() throws SQLException {
+    void returnTypes() throws SQLException {
         Function.create(
                 conn,
                 "f5",
@@ -181,7 +181,7 @@ public class UDFTest {
     }
 
     @Test
-    public void returnArgInt() throws SQLException {
+    void returnArgInt() throws SQLException {
         Function.create(
                 conn,
                 "farg_int",
@@ -200,7 +200,7 @@ public class UDFTest {
     }
 
     @Test
-    public void returnArgLong() throws SQLException {
+    void returnArgLong() throws SQLException {
         Function.create(
                 conn,
                 "farg_long",
@@ -219,7 +219,7 @@ public class UDFTest {
     }
 
     @Test
-    public void returnArgDouble() throws SQLException {
+    void returnArgDouble() throws SQLException {
         Function.create(
                 conn,
                 "farg_doub",
@@ -238,7 +238,7 @@ public class UDFTest {
     }
 
     @Test
-    public void returnArgBlob() throws SQLException {
+    void returnArgBlob() throws SQLException {
         Function.create(
                 conn,
                 "farg_blob",
@@ -257,7 +257,7 @@ public class UDFTest {
     }
 
     @Test
-    public void returnArgString() throws SQLException {
+    void returnArgString() throws SQLException {
         Function.create(
                 conn,
                 "farg_str",
@@ -276,7 +276,7 @@ public class UDFTest {
     }
 
     @Test
-    public void trigger() throws SQLException {
+    void trigger() throws SQLException {
         Function.create(
                 conn,
                 "inform",
@@ -295,7 +295,7 @@ public class UDFTest {
     }
 
     @Test
-    public void aggregate() throws SQLException {
+    void aggregate() throws SQLException {
         Function.create(
                 conn,
                 "mySum",
@@ -326,7 +326,7 @@ public class UDFTest {
     }
 
     @Test
-    public void window() throws SQLException {
+    void window() throws SQLException {
         Function.create(
                 conn,
                 "mySum",
@@ -381,7 +381,7 @@ public class UDFTest {
     }
 
     @Test
-    public void destroy() throws SQLException {
+    void destroy() throws SQLException {
         Function.create(
                 conn,
                 "f1",
@@ -399,7 +399,7 @@ public class UDFTest {
     }
 
     @Test
-    public void manyfunctions() throws SQLException {
+    void manyfunctions() throws SQLException {
         Function.create(
                 conn,
                 "f1",
@@ -510,7 +510,7 @@ public class UDFTest {
     }
 
     @Test
-    public void multipleThreads() throws Exception {
+    void multipleThreads() throws Exception {
         Function func =
                 new Function() {
                     int sum = 0;

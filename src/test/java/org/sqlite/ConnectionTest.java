@@ -27,7 +27,7 @@ public class ConnectionTest {
     @TempDir static File tempDir;
 
     @Test
-    public void isValid() throws SQLException {
+    void isValid() throws SQLException {
         Connection conn = DriverManager.getConnection("jdbc:sqlite:");
         assertThat(conn.isValid(0)).isTrue();
         conn.close();
@@ -35,7 +35,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void executeUpdateOnClosedDB() throws SQLException {
+    void executeUpdateOnClosedDB() throws SQLException {
         Connection conn = DriverManager.getConnection("jdbc:sqlite:");
         Statement stat = conn.createStatement();
         conn.close();
@@ -45,7 +45,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void readOnly() throws SQLException {
+    void readOnly() throws SQLException {
 
         // set read only mode
         SQLiteConfig config = new SQLiteConfig();
@@ -75,7 +75,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void foreignKeys() throws SQLException {
+    void foreignKeys() throws SQLException {
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
 
@@ -99,7 +99,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void canWrite() throws SQLException {
+    void canWrite() throws SQLException {
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:", config.toProperties())) {
@@ -109,7 +109,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void synchronous() throws SQLException {
+    void synchronous() throws SQLException {
         SQLiteConfig config = new SQLiteConfig();
         config.setSynchronous(SynchronousMode.OFF);
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:", config.toProperties());
@@ -125,20 +125,20 @@ public class ConnectionTest {
     }
 
     @Test
-    public void openMemory() throws SQLException {
+    void openMemory() throws SQLException {
         Connection conn = DriverManager.getConnection("jdbc:sqlite:");
         conn.close();
     }
 
     @Test
-    public void isClosed() throws SQLException {
+    void isClosed() throws SQLException {
         Connection conn = DriverManager.getConnection("jdbc:sqlite:");
         conn.close();
         assertThat(conn.isClosed()).isTrue();
     }
 
     @Test
-    public void closeTest() throws SQLException {
+    void closeTest() throws SQLException {
         Connection conn = DriverManager.getConnection("jdbc:sqlite:");
         PreparedStatement prep = conn.prepareStatement("select null;");
         prep.executeQuery();
@@ -147,13 +147,13 @@ public class ConnectionTest {
     }
 
     @Test
-    public void openInvalidLocation() {
+    void openInvalidLocation() {
         assertThatExceptionOfType(SQLException.class)
                 .isThrownBy(() -> DriverManager.getConnection("jdbc:sqlite:/"));
     }
 
     @Test
-    public void openResource() throws Exception {
+    void openResource() throws Exception {
         File testDB = copyToTemp("sample.db");
         assertThat(testDB.exists()).isTrue();
         Connection conn =
@@ -168,7 +168,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void openJARResource() throws Exception {
+    void openJARResource() throws Exception {
         File testJAR = copyToTemp("testdb.jar");
         assertThat(testJAR.exists()).isTrue();
 
@@ -186,7 +186,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void openFile() throws Exception {
+    void openFile() throws Exception {
         File testDB = copyToTemp("sample.db");
 
         assertThat(testDB.exists()).isTrue();
@@ -195,7 +195,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void concurrentClose() throws SQLException, InterruptedException, ExecutionException {
+    void concurrentClose() throws SQLException, InterruptedException, ExecutionException {
         final Connection conn = DriverManager.getConnection("jdbc:sqlite:");
         ResultSet[] rss = new ResultSet[512];
         for (int i = 0; i < rss.length; i++) {
@@ -238,7 +238,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void URIFilenames() throws SQLException {
+    void URIFilenames() throws SQLException {
         Connection conn1 =
                 DriverManager.getConnection("jdbc:sqlite:file:memdb1?mode=memory&cache=shared");
         Statement stmt1 = conn1.createStatement();
@@ -279,7 +279,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void setPragmasFromURI() throws Exception {
+    void setPragmasFromURI() throws Exception {
         File testDB = copyToTemp("sample.db");
 
         assertThat(testDB.exists()).isTrue();
@@ -307,7 +307,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void limits() throws Exception {
+    void limits() throws Exception {
         File testDB = copyToTemp("sample.db");
 
         assertThat(testDB.exists()).isTrue();
@@ -324,7 +324,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void ignoreUnknownParametersInURI() throws Exception {
+    void ignoreUnknownParametersInURI() throws Exception {
         Connection conn =
                 DriverManager.getConnection(
                         "jdbc:sqlite:file::memory:?cache=shared&foreign_keys=ON&debug=&invalid");
@@ -339,7 +339,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void errorOnEmptyPragmaValueInURI() {
+    void errorOnEmptyPragmaValueInURI() {
         assertThatExceptionOfType(SQLException.class)
                 .isThrownBy(
                         () ->
@@ -348,7 +348,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void ignoreDoubleAmpersandsInURI() throws Exception {
+    void ignoreDoubleAmpersandsInURI() throws Exception {
         File testDB = copyToTemp("sample.db");
 
         assertThat(testDB.exists()).isTrue();
@@ -371,7 +371,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void useLastSpecifiedPragmaValueInURI() throws Exception {
+    void useLastSpecifiedPragmaValueInURI() throws Exception {
         File testDB = copyToTemp("sample.db");
 
         assertThat(testDB.exists()).isTrue();
@@ -391,7 +391,7 @@ public class ConnectionTest {
     }
 
     @Test
-    public void overrideURIPragmaValuesWithProperties() throws Exception {
+    void overrideURIPragmaValuesWithProperties() throws Exception {
         File testDB = copyToTemp("sample.db");
 
         assertThat(testDB.exists()).isTrue();

@@ -32,7 +32,7 @@ public class ExtendedCommandTest {
     }
 
     @Test
-    public void parseBackupCmd() throws SQLException {
+    void parseBackupCmd() throws SQLException {
         BackupCommand b = parseBackupCommand("backup mydb to somewhere/backupfolder/mydb.sqlite");
         assertThat(b.srcDB).isEqualTo("mydb");
         assertThat(b.destFile).isEqualTo("somewhere/backupfolder/mydb.sqlite");
@@ -51,7 +51,7 @@ public class ExtendedCommandTest {
     }
 
     @Test
-    public void parseRestoreCmd() throws SQLException {
+    void parseRestoreCmd() throws SQLException {
         RestoreCommand b =
                 parseRestoreCommand("restore mydb from somewhere/backupfolder/mydb.sqlite");
         assertThat(b.targetDB).isEqualTo("mydb");

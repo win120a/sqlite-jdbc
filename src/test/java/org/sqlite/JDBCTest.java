@@ -22,7 +22,7 @@ import org.junit.jupiter.api.io.TempDir;
 
 public class JDBCTest {
     @Test
-    public void enableLoadExtensionTest() throws Exception {
+    void enableLoadExtensionTest() throws Exception {
         Properties prop = new Properties();
         prop.setProperty("enable_load_extension", "true");
 
@@ -42,25 +42,25 @@ public class JDBCTest {
     }
 
     @Test
-    public void majorVersion() throws Exception {
+    void majorVersion() throws Exception {
         int major = DriverManager.getDriver("jdbc:sqlite:").getMajorVersion();
         int minor = DriverManager.getDriver("jdbc:sqlite:").getMinorVersion();
     }
 
     @Test
-    public void shouldReturnNullIfProtocolUnhandled() throws Exception {
+    void shouldReturnNullIfProtocolUnhandled() throws Exception {
         assertThat(JDBC.createConnection("jdbc:anotherpopulardatabaseprotocol:", null)).isNull();
     }
 
     @Test
-    public void allDriverPropertyInfoShouldHaveADescription() throws Exception {
+    void allDriverPropertyInfoShouldHaveADescription() throws Exception {
         Driver driver = DriverManager.getDriver("jdbc:sqlite:");
         assertThat(driver.getPropertyInfo(null, null))
                 .allSatisfy((info) -> assertThat(info.description).isNotNull());
     }
 
     @Test
-    public void pragmaReadOnly() throws SQLException {
+    void pragmaReadOnly() throws SQLException {
         SQLiteConnection connection =
                 (SQLiteConnection)
                         DriverManager.getConnection(
@@ -69,7 +69,7 @@ public class JDBCTest {
     }
 
     @Test
-    public void canSetJdbcConnectionToReadOnly() throws Exception {
+    void canSetJdbcConnectionToReadOnly() throws Exception {
         SQLiteDataSource dataSource = createDatasourceWithExplicitReadonly();
         try (Connection connection = dataSource.getConnection()) {
             connection.setAutoCommit(false);
@@ -84,7 +84,7 @@ public class JDBCTest {
     }
 
     @Test
-    public void cannotSetJdbcConnectionToReadOnlyAfterFirstStatement() throws Exception {
+    void cannotSetJdbcConnectionToReadOnlyAfterFirstStatement() throws Exception {
         SQLiteDataSource dataSource = createDatasourceWithExplicitReadonly();
 
         try (Connection connection = dataSource.getConnection()) {
@@ -102,7 +102,7 @@ public class JDBCTest {
     }
 
     @Test
-    public void canSetJdbcConnectionToReadOnlyAfterCommit() throws Exception {
+    void canSetJdbcConnectionToReadOnlyAfterCommit() throws Exception {
         SQLiteDataSource dataSource = createDatasourceWithExplicitReadonly();
         try (Connection connection = dataSource.getConnection()) {
             connection.setAutoCommit(false);
@@ -120,7 +120,7 @@ public class JDBCTest {
     }
 
     @Test
-    public void canSetJdbcConnectionToReadOnlyAfterRollback() throws Exception {
+    void canSetJdbcConnectionToReadOnlyAfterRollback() throws Exception {
         System.out.println("Creating JDBC Datasource");
         SQLiteDataSource dataSource = createDatasourceWithExplicitReadonly();
         System.out.println("Creating JDBC Connection");
@@ -157,7 +157,7 @@ public class JDBCTest {
     }
 
     @Test
-    public void cannotExecuteUpdatesWhenConnectionIsSetToReadOnly() throws Exception {
+    void cannotExecuteUpdatesWhenConnectionIsSetToReadOnly() throws Exception {
         SQLiteDataSource dataSource = createDatasourceWithExplicitReadonly();
         try (Connection connection = dataSource.getConnection()) {
             connection.setAutoCommit(false);
@@ -183,7 +183,7 @@ public class JDBCTest {
     void name() {}
 
     @Test
-    public void jdbcHammer(@TempDir File tempDir) throws Exception {
+    void jdbcHammer(@TempDir File tempDir) throws Exception {
         final SQLiteDataSource dataSource = createDatasourceWithExplicitReadonly();
         File tempFile = File.createTempFile("myTestDB", ".db", tempDir);
         dataSource.setUrl("jdbc:sqlite:" + tempFile.getAbsolutePath());

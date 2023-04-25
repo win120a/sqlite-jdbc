@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class SQLiteConfigTest {
 
     @Test
-    public void toProperties() {
+    void toProperties() {
         SQLiteConfig config = new SQLiteConfig();
 
         config.setReadOnly(true);
@@ -27,7 +27,7 @@ public class SQLiteConfigTest {
     }
 
     @Test
-    public void setBusyTimeout() {
+    void setBusyTimeout() {
         SQLiteConfig config = new SQLiteConfig();
 
         // verify the default is set in the pragma table and the cached value

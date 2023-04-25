@@ -57,7 +57,7 @@ public class SavepointTest {
     }
 
     @Test
-    public void insert() throws SQLException {
+    void insert() throws SQLException {
         ResultSet rs;
         String countSql = "select count(*) from trans;";
 
@@ -86,7 +86,7 @@ public class SavepointTest {
     }
 
     @Test
-    public void rollback() throws SQLException {
+    void rollback() throws SQLException {
         String select = "select * from trans;";
         ResultSet rs;
 
@@ -106,7 +106,7 @@ public class SavepointTest {
     }
 
     @Test
-    public void multiRollback() throws SQLException {
+    void multiRollback() throws SQLException {
         ResultSet rs;
 
         stat1.executeUpdate("create table t (c1);");
@@ -159,7 +159,7 @@ public class SavepointTest {
     }
 
     @Test
-    public void release() throws SQLException {
+    void release() throws SQLException {
         ResultSet rs;
         String countSql = "select count(*) from trans;";
 

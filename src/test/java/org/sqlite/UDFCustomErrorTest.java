@@ -28,7 +28,7 @@ public class UDFCustomErrorTest {
     }
 
     @Test
-    public void customErr() throws SQLException {
+    void customErr() throws SQLException {
         Function.create(
                 conn,
                 "f9",

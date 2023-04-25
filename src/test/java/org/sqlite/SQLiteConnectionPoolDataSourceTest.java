@@ -28,7 +28,7 @@ import org.sqlite.javax.SQLiteConnectionPoolDataSource;
 public class SQLiteConnectionPoolDataSourceTest {
 
     @Test
-    public void connectionTest() throws SQLException {
+    void connectionTest() throws SQLException {
         ConnectionPoolDataSource ds = new SQLiteConnectionPoolDataSource();
 
         PooledConnection pooledConn = ds.getPooledConnection();
@@ -56,7 +56,7 @@ public class SQLiteConnectionPoolDataSourceTest {
 
     @Disabled
     @Test
-    public void proxyConnectionCloseTest() throws SQLException {
+    void proxyConnectionCloseTest() throws SQLException {
         ConnectionPoolDataSource ds = new SQLiteConnectionPoolDataSource();
         PooledConnection pooledConn = ds.getPooledConnection();
         System.out.println("pooledConn: " + pooledConn.getClass());

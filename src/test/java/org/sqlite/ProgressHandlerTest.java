@@ -40,7 +40,7 @@ public class ProgressHandlerTest {
     }
 
     @Test
-    public void basicProgressHandler() throws Exception {
+    void basicProgressHandler() throws Exception {
         final int[] calls = {0};
         ProgressHandler.setHandler(
                 conn,
@@ -57,7 +57,7 @@ public class ProgressHandlerTest {
     }
 
     @Test
-    public void testUnregister() throws Exception {
+    void testUnregister() throws Exception {
         final int[] calls = {0};
         ProgressHandler.setHandler(
                 conn,
@@ -78,7 +78,7 @@ public class ProgressHandlerTest {
     }
 
     @Test
-    public void testInterrupt() {
+    void testInterrupt() {
 
         try {
             ProgressHandler.setHandler(
@@ -106,7 +106,7 @@ public class ProgressHandlerTest {
      * @throws Exception on test failure
      */
     @Test
-    public void testClearProgressHelper() throws Exception {
+    void testClearProgressHelper() throws Exception {
         SQLiteConnection sqliteConnection = (SQLiteConnection) conn;
         final DB database = sqliteConnection.getDatabase();
         setDummyHandler();

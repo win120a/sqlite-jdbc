@@ -33,7 +33,7 @@ public class ExtensionTest {
     }
 
     @Test
-    public void extFTS3() throws Exception {
+    void extFTS3() throws Exception {
         stat.execute("create virtual table recipe using fts3(name, ingredients)");
         stat.execute(
                 "insert into recipe (name, ingredients) values('broccoli stew', 'broccoli peppers cheese tomatoes')");
@@ -48,7 +48,7 @@ public class ExtensionTest {
     }
 
     @Test
-    public void extFTS5() throws Exception {
+    void extFTS5() throws Exception {
         stat.execute("create virtual table recipe using fts5(name, ingredients)");
         stat.execute(
                 "insert into recipe (name, ingredients) values('broccoli stew', 'broccoli peppers cheese tomatoes')");

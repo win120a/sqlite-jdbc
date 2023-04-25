@@ -57,7 +57,7 @@ public class SQLiteJDBCLoaderTest {
     }
 
     @Test
-    public void query() {
+    void query() {
         // if e.getMessage() is "out of memory", it probably means no
         // database file is found
         assertThatNoException()
@@ -82,7 +82,7 @@ public class SQLiteJDBCLoaderTest {
     }
 
     @Test
-    public void function() throws SQLException {
+    void function() throws SQLException {
         Function.create(
                 connection,
                 "total",
@@ -103,12 +103,12 @@ public class SQLiteJDBCLoaderTest {
     }
 
     @Test
-    public void version() {
+    void version() {
         // System.out.println(SQLiteJDBCLoader.getVersion());
     }
 
     @Test
-    public void test(@TempDir Path tmpDir) throws Throwable {
+    void test(@TempDir Path tmpDir) throws Throwable {
         final AtomicInteger completedThreads = new AtomicInteger(0);
         ExecutorService pool = Executors.newFixedThreadPool(32);
         for (int i = 0; i < 32; i++) {

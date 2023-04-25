@@ -33,7 +33,7 @@ public class QueryTest {
     }
 
     @Test
-    public void nullQuery() throws Exception {
+    void nullQuery() throws Exception {
         try (Connection conn = getConnection()) {
             try (Statement stmt = conn.createStatement()) {
                 assertThatExceptionOfType(NullPointerException.class)
@@ -43,7 +43,7 @@ public class QueryTest {
     }
 
     @Test
-    public void createTable() throws Exception {
+    void createTable() throws Exception {
         Connection conn = getConnection();
         Statement stmt = conn.createStatement();
         stmt.execute(
@@ -63,7 +63,7 @@ public class QueryTest {
     }
 
     @Test
-    public void setFloatTest() throws Exception {
+    void setFloatTest() throws Exception {
         float f = 3.141597f;
         Connection conn = getConnection();
 
@@ -81,7 +81,7 @@ public class QueryTest {
     }
 
     @Test
-    public void dateTimeTest() throws Exception {
+    void dateTimeTest() throws Exception {
         Connection conn = getConnection();
 
         conn.createStatement().execute("create table sample (start_time datetime)");
@@ -104,7 +104,7 @@ public class QueryTest {
     }
 
     @Test
-    public void dateTimeWithTimeZoneTest() throws Exception {
+    void dateTimeWithTimeZoneTest() throws Exception {
         Properties properties = new Properties();
         properties.setProperty(SQLiteConfig.Pragma.DATE_CLASS.pragmaName, "text");
         Connection conn = DriverManager.getConnection("jdbc:sqlite:", properties);
@@ -146,7 +146,7 @@ public class QueryTest {
     }
 
     @Test
-    public void notEmptyBlob() throws Exception {
+    void notEmptyBlob() throws Exception {
         Connection conn = getConnection();
 
         conn.createStatement().execute("create table sample (b blob not null)");
@@ -160,7 +160,7 @@ public class QueryTest {
     }
 
     @Test
-    public void emptyBlob() throws Exception {
+    void emptyBlob() throws Exception {
         Connection conn = getConnection();
 
         conn.createStatement().execute("create table sample (b blob null)");
@@ -174,7 +174,7 @@ public class QueryTest {
     }
 
     @Test
-    public void nullBlob() throws Exception {
+    void nullBlob() throws Exception {
         Connection conn = getConnection();
 
         conn.createStatement().execute("create table sample (b blob null)");
@@ -188,7 +188,7 @@ public class QueryTest {
     }
 
     @Test
-    public void viewTest() throws Exception {
+    void viewTest() throws Exception {
         Connection conn = getConnection();
         Statement st1 = conn.createStatement();
         // drop table if it already exists
@@ -202,7 +202,7 @@ public class QueryTest {
     }
 
     @Test
-    public void timeoutTest() throws Exception {
+    void timeoutTest() throws Exception {
         Connection conn = getConnection();
         Statement st1 = conn.createStatement();
 
@@ -212,7 +212,7 @@ public class QueryTest {
     }
 
     @Test
-    public void concatTest() throws SQLException {
+    void concatTest() throws SQLException {
         try (Connection conn = getConnection()) {
             // create a database connection
             Statement statement = conn.createStatement();
@@ -274,7 +274,7 @@ public class QueryTest {
     }
 
     @Test
-    public void clobTest() throws SQLException {
+    void clobTest() throws SQLException {
         String content = "test_clob";
         try (Connection conn = getConnection()) {
             try (PreparedStatement stmt = conn.prepareStatement("select cast(? as clob)")) {
@@ -297,7 +297,7 @@ public class QueryTest {
     }
 
     @Test
-    public void nullClobTest() throws SQLException {
+    void nullClobTest() throws SQLException {
         try (Connection conn = getConnection()) {
             try (PreparedStatement stmt = conn.prepareStatement("select cast(? as clob)")) {
                 stmt.setString(1, null);
@@ -311,7 +311,7 @@ public class QueryTest {
     }
 
     @Test
-    public void github720_Incorrect_Update_Count_After_Deleting_Many_Rows() throws Exception {
+    void github720_Incorrect_Update_Count_After_Deleting_Many_Rows() throws Exception {
         int size = 50000;
         Connection conn = getConnection();
         conn.createStatement().execute("drop table if exists test");
